@@ -42,9 +42,4 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Paciente','user_id','id');
     }
-
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
 }
