@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th>Paciente Id</th>
-        <th>Doctor Id</th>
-        <th>Date Cita</th>
+                <th>Doctor Id</th>
+                <th>Date Cita</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>

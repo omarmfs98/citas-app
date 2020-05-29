@@ -7,6 +7,7 @@ use App\Models\Paciente;
 use App\Models\Specialty;
 use App\User;
 use App\Models\Secure;
+use Carbon\Carbon;
 
 use Illuminate\Support\ServiceProvider;
 use View;
@@ -31,8 +32,22 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['citas.fields', 'schedules.fields'], function ($view) {
-            $doctorItems = Doctor::with('user')->get()->pluck('user.first_name', 'id')->toArray();
+            $doctorItems = Doctor::with('user')->get()->pluck('user.first_name','id')->toArray();
             $view->with('doctorItems', $doctorItems);
+        });
+        View::composer(['citas.fields'], function ($view) {
+            $schedules = Doctor::with(['schedules', 'user'])->get()->toArray();
+            $allSchedules = array();
+            foreach ($schedules as $key => $schedule) {
+                foreach ($schedule['schedules'] as $key => $sche) {
+                    $allSchedules[$sche['id']] = Carbon::createFromDate($sche['start_time'])->toDateTimeString();
+                }
+                $schedulesItems = array(
+                    'Dr(a). ' . $schedule['user']['first_name'] => $allSchedules
+                );
+                
+            }
+            $view->with('schedulesItems', $schedulesItems);
         });
         View::composer(['citas.fields'], function ($view) {
             $pacienteItems = Paciente::with('user')->get()->pluck('user.first_name','id')->toArray();
