@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DoctorSeeder extends Seeder
+class PacienteSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,11 +11,11 @@ class DoctorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('doctors')->insert([
+        DB::table('pacientes')->insert([
             [
                 'id' => 1,
-                'specialty_id' => 1,
-                'user_id' => 2,
+                'user_id' => 3,
+                'secure_id' => 1,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ]       

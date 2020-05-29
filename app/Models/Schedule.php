@@ -26,7 +26,8 @@ class Schedule extends Model
 
     public $fillable = [
         'start_time',
-        'end_time'
+        'end_time',
+        'doctor_id'
     ];
 
     /**
@@ -37,7 +38,8 @@ class Schedule extends Model
     protected $casts = [
         'id' => 'integer',
         'start_time' => 'datetime',
-        'end_time' => 'datetime'
+        'end_time' => 'datetime',
+        'doctor_id' => 'integer'
     ];
 
     /**
@@ -47,8 +49,13 @@ class Schedule extends Model
      */
     public static $rules = [
         'start_time' => 'required',
-        'end_time' => 'required'
+        'end_time' => 'required',
+        'doctor_id' => 'required'
     ];
 
     
+    public function doctor()
+    {
+        return $this->hasOne('App\Models\Doctor','id','doctor_id');
+    }
 }

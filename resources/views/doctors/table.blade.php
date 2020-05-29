@@ -10,8 +10,8 @@
         <tbody>
         @foreach($doctors as $doctor)
             <tr>
-                <td>{{ $doctor->specialty_id }}</td>
-                <td>{{ $doctor->user_id }}</td>
+                <td>{{ $doctor->specialty->name }}</td>
+                <td>{{ $doctor->user->first_name }}</td>
                 <td>
                     {!! Form::open(['route' => ['doctors.destroy', $doctor->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

@@ -30,3 +30,5 @@ Route::resource('pacientes', 'PacienteAPIController');
 Route::resource('schedules', 'ScheduleAPIController');
 
 Route::resource('doctors', 'DoctorAPIController');
+
+Route::resource('citas', 'CitaAPIController');

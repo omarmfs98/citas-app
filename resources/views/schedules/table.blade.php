@@ -3,7 +3,8 @@
         <thead>
             <tr>
                 <th>Start Time</th>
-        <th>End Time</th>
+                <th>End Time</th>
+                <th>Doctor</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -11,7 +12,8 @@
         @foreach($schedules as $schedule)
             <tr>
                 <td>{{ $schedule->start_time }}</td>
-            <td>{{ $schedule->end_time }}</td>
+                <td>{{ $schedule->end_time }}</td>
+                <td>{{ $schedule->doctor->user->first_name }}</td>
                 <td>
                     {!! Form::open(['route' => ['schedules.destroy', $schedule->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

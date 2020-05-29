@@ -18,3 +18,7 @@
     <a href="{{ route('doctors.index') }}"><i class="fa fa-edit"></i><span>Doctors</span></a>
 </li>
 
+<li class="{{ Request::is('citas*') ? 'active' : '' }}">
+    <a href="{{ route('citas.index') }}"><i class="fa fa-edit"></i><span>Citas</span></a>
+</li>
+

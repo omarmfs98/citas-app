@@ -17,6 +17,7 @@ class DoctorController extends AppBaseController
 
     public function __construct(DoctorRepository $doctorRepo)
     {
+        $this->middleware('role:Doctor|Admin');
         $this->doctorRepository = $doctorRepo;
     }
 

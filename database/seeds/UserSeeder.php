@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -44,7 +45,19 @@ class UserSeeder extends Seeder
                 'dni' => '123445678',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
-            ],
+            ]
         ]);
+
+        $adminUsers = User::whereIn('id', [1])->get();
+
+        $doctorUsers = User::whereIn('id', [2])->get();
+
+        foreach ($adminUsers as $adminUser) {
+            $adminUser->assignRole('Admin');
+        }
+
+        foreach ($doctorUsers as $doctorUser) {
+            $doctorUser->assignRole('Doctor');
+        }
     }
 }

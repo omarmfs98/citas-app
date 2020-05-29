@@ -49,4 +49,13 @@ class Doctor extends Model
     ];
 
     
+    public function user()
+    {
+        return $this->hasOne('App\User','id','user_id');
+    }
+
+    public function specialty()
+    {
+        return $this->hasOne('App\Models\Specialty','id','specialty_id');
+    }
 }

@@ -18,8 +18,10 @@ class CreateSchedulesTable extends Migration
             $table->increments('id');
             $table->datetime('start_time');
             $table->datetime('end_time');
+            $table->integer('doctor_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('doctor_id')->references('id')->on('doctors');
         });
     }
 
