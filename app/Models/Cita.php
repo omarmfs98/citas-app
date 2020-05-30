@@ -27,7 +27,6 @@ class Cita extends Model
 
     public $fillable = [
         'paciente_id',
-        'doctor_id',
         'date_cita'
     ];
 
@@ -39,7 +38,6 @@ class Cita extends Model
     protected $casts = [
         'id' => 'integer',
         'paciente_id' => 'integer',
-        'doctor_id' => 'integer',
         'date_cita' => 'datetime'
     ];
 
@@ -50,7 +48,6 @@ class Cita extends Model
      */
     public static $rules = [
         'paciente_id' => 'required',
-        'doctor_id' => 'required',
         'date_cita' => 'required'
     ];
 
